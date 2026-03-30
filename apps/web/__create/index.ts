@@ -80,7 +80,7 @@ app.use('*', async (c, next) => {
   await next();
   c.header(
     'Content-Security-Policy',
-    "default-src 'self' data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.vercel.com *.gstatic.com vercel.live *.vercel.sh kit.fontawesome.com; style-src 'self' 'unsafe-inline' *.googleapis.com fonts.googleapis.com; font-src 'self' data: *.gstatic.com fonts.gstatic.com kit-free.fontawesome.com; img-src 'self' data: blob: *; connect-src 'self' *; frame-src 'self' *;"
+    "default-src 'self' data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.vercel.com *.gstatic.com vercel.live *.vercel.sh kit.fontawesome.com ka-f.fontawesome.com; style-src 'self' 'unsafe-inline' *.googleapis.com fonts.googleapis.com; font-src 'self' data: *.gstatic.com fonts.gstatic.com kit-free.fontawesome.com ka-f.fontawesome.com *.fontawesome.com; img-src 'self' data: blob: *; connect-src 'self' *; frame-src 'self' *;"
   );
 });
 for (const method of ['post', 'put', 'patch'] as const) {
@@ -99,7 +99,7 @@ if (process.env.AUTH_SECRET) {
   app.use(
     '*',
     initAuthConfig((c) => ({
-      secret: c.env.AUTH_SECRET,
+      secret: process.env.AUTH_SECRET,
       pages: {
         signIn: '/account/signin',
         signOut: '/account/logout',
